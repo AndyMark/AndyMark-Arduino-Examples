@@ -1,4 +1,8 @@
 //This is a mashup of FastSPI_LED2 firstlight example and some other light chase hacks
+//We ran this demo off of our AM-2287 ethernet arduino's http://www.andymark.com/product-p/am-2287.htm
+//DO NOT try to power the whole strip off the arduino 5v regulator.  
+//At full bright white, the strip can draw 1.5Amps or so. This will overheat the regulator.
+//We recommend running these led strips off of the AM-0899 10-30Vin to 5V 5A out stepdown converter http://www.andymark.com/product-p/am-0899.htm
 //AndyMark, LLC
 //Craig Kessler 12/3/2013
 //Works with the AndyMark AM-2640 LED Strip based on the WS2801 chipset
@@ -12,7 +16,7 @@
 // How many leds are in the strip? AndyMark's 2.5 meter strip has 80 leds 
 #define NUM_LEDS 80
 
-//Remember on the AM-2640 LED strips yellow is ground! (don't blame us they come that way)
+//Remember on the AM-2640 LED strip's yellow wire is ground! (don't blame us they come that way)
 
 // Data pin that led data will be written out over
 #define DATA_PIN 11	//Green Wire
