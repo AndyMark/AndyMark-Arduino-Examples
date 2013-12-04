@@ -21,7 +21,7 @@
 // Data pin that led data will be written out over
 #define DATA_PIN 11	//Green Wire
 
-// Clock pin only needed for SPI based chipsets 
+// Clock pin SPI 
 #define CLOCK_PIN 13  //Blue Wire
 
 // This is an array of leds.  One item for each led in your strip.
