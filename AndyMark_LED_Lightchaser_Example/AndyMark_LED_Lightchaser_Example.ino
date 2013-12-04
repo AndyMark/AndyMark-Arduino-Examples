@@ -19,10 +19,10 @@
 //Remember on the AM-2640 LED strip's yellow wire is ground! (don't blame us they come that way)
 
 // Data pin that led data will be written out over
-#define DATA_PIN 11	//Green Wire
+#define DATA_PIN 11	//Green wire from AM-2640's power connector
 
 // Clock pin SPI 
-#define CLOCK_PIN 13  //Blue Wire
+#define CLOCK_PIN 13    //Blue wire from AM-2640's power connector
 
 // This is an array of leds.  One item for each led in your strip.
 CRGB leds[NUM_LEDS];
