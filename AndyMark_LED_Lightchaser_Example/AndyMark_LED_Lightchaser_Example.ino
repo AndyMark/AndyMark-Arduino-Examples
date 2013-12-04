@@ -1,9 +1,9 @@
-//This is a mashup of FastSPI_LED2 firstlight example and some other light chase hacks
+//This is a mashup of FastSPI_LED2 firstlight example and some other light chase hacks for the AM-2640 5V, Addressable LED strips http://www.andymark.com/product-p/am-2640.htm
 //We ran this demo off of our AM-2287 ethernet arduino's http://www.andymark.com/product-p/am-2287.htm
 //DO NOT try to power the whole strip off the arduino 5v regulator.  
 //At full bright white, the strip can draw 1.5Amps or so. This will overheat the regulator.
 //We recommend running these led strips off of the AM-0899 10-30Vin to 5V 5A out stepdown converter http://www.andymark.com/product-p/am-0899.htm
-//AndyMark, LLC
+//AndyMark, Inc.
 //Craig Kessler 12/3/2013
 //Works with the AndyMark AM-2640 LED Strip based on the WS2801 chipset
 //This code requires that the fastspi library be put in your arduino\libraries folder

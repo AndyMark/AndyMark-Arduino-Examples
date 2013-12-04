@@ -1,4 +1,12 @@
-//This is a mashup of the FastSPI library and code from http://www.instructables.com/id/Arduino-Persistence-of-Vision-Display/ for POV
+//This is simple "light saber" demo to show off the AM-2640 5V, Addressable LED strips http://www.andymark.com/product-p/am-2640.htm
+//We ran this demo off of our AM-2287 ethernet arduino's http://www.andymark.com/product-p/am-2287.htm
+//DO NOT try to power the whole strip off the arduino 5v regulator!  
+//At full bright white, the strip was drawing 1.5Amps or so. This will overheat the regulator.
+//We recommend running these led strips off of the AM-0899 10-30Vin to 5V 5A out stepdown converter http://www.andymark.com/product-p/am-0899.htm
+//If you want to get creative you could integrate this sound file to take this project to the next level http://www.mediacollege.com/downloads/sound-effects/star-wars/lightsaber/lightsaber_02.mp3
+//Craig Kessler
+//AndyMark , Inc. 12/04/2013
+
 //https://code.google.com/p/fastspi/
 //https://code.google.com/p/fastspi/wiki/CRGBreference
 #include "FastSPI_LED2.h"
@@ -9,11 +17,13 @@
 // For easy wiring of cut strips use the AM-2641 clip on connector
 #define NUM_LEDS 80
 
-// Data pin that led data will be written out over
-#define DATA_PIN 11   //Green wire from AM-2640 power connector
+//Remember on the AM-2640 LED strip's yellow wire is ground! (don't blame us they come that way)
 
-// Clock pin only needed for SPI based chipsets when not using hardware SPI
-#define CLOCK_PIN 13  //Blue wire from AM-2640 power connector
+// Data pin that led data will be written out over
+#define DATA_PIN 11   //Green wire from AM-2640's power connector
+
+// Clock pin for SPI
+#define CLOCK_PIN 13  //Blue wire from AM-2640's power connector
 
 // This is an array of leds.  One item for each led in your strip.
 CRGB leds[NUM_LEDS];
@@ -60,9 +70,6 @@ void light_saber_on(uint32_t c, uint8_t wait)
 	int led_number = 0;
 	FastLED.clear();
 	FastLED.setBrightness(5);
-	//Need to get a speaker so we can build a call to light saber power up sound.
-
-	//SdPlay.play();
 		
 	for(led_number = 0; led_number < NUM_LEDS; led_number++)
 	{
@@ -92,3 +99,4 @@ void light_saber_on(uint32_t c, uint8_t wait)
 	}
 	return;
 }
+
