@@ -10,3 +10,6 @@ Go to http://files.andymark.com/AndyMark_AM-2640_LED_setup.pdf for some simple h
 
 Arduino info on how to install software libraries http://arduino.cc/en/Guide/Libraries
 
+If you are new to Arduino there is new training resource provided by a 3rd party here:
+http://www.arduinoclassroom.com/index.php/arduino-101
+
