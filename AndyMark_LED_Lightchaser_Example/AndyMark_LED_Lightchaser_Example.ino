@@ -12,6 +12,9 @@
 //DO NOT try to power the whole strip (80 LEDs) off the arduino 5v regulator.
 //At full bright white, the strip can draw 1.5Amps or so. This will overheat or burnout the regulator.
 //Remember on the AM-2640 LED strip's yellow wire is ground! (don't blame us they come that way)
+//Make sure you connect the Yellow ground from the LED strip to the Arduino ground.
+//Communications to the LEDs requires a common ground to work.
+
 //We recommend running these led strips off of the AM-0899 10-30Vin to 5V 5A out stepdown converter http://www.andymark.com/product-p/am-0899.htm
 
 //If you are using the AndyMark AM-2297 Arduino Ethernet board then make sure you select Tools>Board>Arduino Ethernet from the Arduino IDE menu
