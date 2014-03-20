@@ -5,12 +5,12 @@
 //This code requires that the fastspi library be put in your arduino\libraries folder
 //Arduino info on how to install software libraries http://arduino.cc/en/Guide/Libraries
 //AndyMark, Inc.
-//Craig Kessler 12/3/2013, 3/17/2014
+//Craig Kessler 12/3/2013, 3/17/2014, 3/20/2014
 
 
-//***NOTE: This strip runs off of 5V MAX!!!.  Applying much more than 5V will damage/destroy you LED strip!***
-//***Handling note: Don't mess with the wiring while the power is on. This can cause voltage spikes        ***
-//***or sneak ground paths that can damage the LED strip                                                   ***
+//***NOTE: This strip runs off of 5V MAX!!!. Applying much more than 5V will damage/destroy you LED strip!***
+//***Handling note: Don't mess with the wiring while the power is on. This can cause voltage spikes ***
+//***or sneak ground paths that can damage the LED strip ***
 
 //DO NOT try to power the whole strip (80 LEDs) off the arduino 5v regulator.
 //At full bright white, the strip can draw 1.5Amps or so. This will overheat or burnout the regulator.
@@ -25,6 +25,7 @@
 //Another new training resource provided by a 3rd party is here: http://www.arduinoclassroom.com/index.php/arduino-101
 
 
+
 //CSK 3/17/2013 Libraries new location
 //https://github.com/FastLED/FastLED
 //https://github.com/FastLED/FastLED/wiki/Overview
@@ -34,13 +35,11 @@
 #include "FastLED.h"
 
 //Tell it how many leds are in the strip. AndyMark's 2.5 meter strip has 80 leds
-#define NUM_LEDS 80
+#define NUM_LEDS 18
 // This is an array of leds. One item for each led in your strip.
 CRGB leds[NUM_LEDS];
 
-//CSK 3/17/2014 I moved these to pins that don't conflict with Ethernet functions 
-//in case you want to control LEDs via Ethernet.  
-//You can change the Data and Clock pins to whatever pins work for you.
+//CSK 3/17/2014 I moved these to pins that don't conflict with Ethernet functions in case you want to control LEDs via Ethernet
 #define DATA_PIN 3 //Green wire from AM-2640's power connector
 // Clock pin SPI
 #define CLOCK_PIN 4 //Blue wire from AM-2640's power connector
@@ -66,8 +65,9 @@ void setup()
 	// FastLED.addLeds<LPD8806, RGB>(leds, NUM_LEDS);
 
 	//***This is the chipset in the AM-2640 LED strip***
+	//CSK 3/17/2013 Changed to this function to allow direct data and clock pin specification
 	FastLED.addLeds<WS2801, DATA_PIN, CLOCK_PIN, RGB>(leds, NUM_LEDS);
-	
+
 	// FastLED.addLeds<SM16716, DATA_PIN, CLOCK_PIN, RGB>(leds, NUM_LEDS);
 	// FastLED.addLeds<LPD8806, DATA_PIN, CLOCK_PIN, RGB>(leds, NUM_LEDS);
 }
@@ -77,7 +77,8 @@ void loop()
 	//This is kind of Arduino's equivalent to Main() in a standard C program
 	//This, as the name implies, loops endlessly.
 	//https://code.google.com/p/fastspi/wiki/CRGBreference
-	
+	//CSK 3/20/2014 I added a rainbow function just for grins
+	rainbow(20);
 	cylon(CRGB::Red,25, 5);
 	color_chase(CRGB::Green, 15);
 	color_chase(CRGB::BlueViolet, 15);
@@ -120,6 +121,7 @@ void color_chase(uint32_t color, uint8_t wait)
 		// Turn our current led back to black for the next loop around
 		leds[led_number] = CRGB::Black;
 	}
+	return;
 }
 
 //Move an "empty" dot down the strip
@@ -129,7 +131,7 @@ void missing_dot_chase(uint32_t color, uint8_t wait)
 	for (int led_brightness = MAX_BRIGHTNESS; led_brightness > 10; led_brightness/=2)
 	{
 		FastLED.setBrightness(led_brightness);
-		
+
 		// Start by turning all pixels on:
 		//for(int led_number = 0; led_number < NUM_LEDS; led_number++) leds[led_number] = color;
 		//https://github.com/FastLED/FastLED/wiki/Controlling-leds
@@ -147,6 +149,7 @@ void missing_dot_chase(uint32_t color, uint8_t wait)
 			delay(wait);
 		}
 	}
+	return;
 }
 
 //Cylon - LED sweeps back and forth, with the color, delay and number of cycles of your choice 
@@ -181,5 +184,21 @@ void cylon(CRGB color, uint16_t wait, uint8_t number_of_cycles)
 			delay(wait);
 		}
 	}
+	return;
 }
 
+void rainbow(uint8_t wait) 
+{
+
+	uint16_t hue;
+	FastLED.clear();
+
+	for(hue=10; hue<255*3; hue++) 
+	{
+
+		fill_rainbow( &(leds[0]), NUM_LEDS /*led count*/, hue /*starting hue*/);		
+		FastLED.show();
+		delay(wait);
+	}
+	return;
+}
