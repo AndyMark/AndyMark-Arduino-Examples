@@ -8,7 +8,10 @@
 //Craig Kessler 12/3/2013, 3/17/2014
 
 
-//***NOTE: This strip runs off of 5V MAX!!!.  Applying more than 5V will damage/destroy you LED strip!***
+//***NOTE: This strip runs off of 5V MAX!!!.  Applying much more than 5V will damage/destroy you LED strip!***
+//***Handling note: Don't mess with the wiring while the power is on. This can cause voltage spikes        ***
+//***or sneak ground paths that can damage the LED strip                                                   ***
+
 //DO NOT try to power the whole strip (80 LEDs) off the arduino 5v regulator.
 //At full bright white, the strip can draw 1.5Amps or so. This will overheat or burnout the regulator.
 //Remember on the AM-2640 LED strip's yellow wire is ground! (don't blame us they come that way)
