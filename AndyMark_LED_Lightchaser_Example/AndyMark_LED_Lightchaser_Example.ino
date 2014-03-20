@@ -35,7 +35,9 @@
 // This is an array of leds. One item for each led in your strip.
 CRGB leds[NUM_LEDS];
 
-//CSK 3/17/2014 I moved these to pins that don't conflict with Ethernet functions in case you want to control LEDs via Ethernet
+//CSK 3/17/2014 I moved these to pins that don't conflict with Ethernet functions 
+//in case you want to control LEDs via Ethernet.  
+//You can change the Data and Clock pins to whatever pins work for you.
 #define DATA_PIN 3 //Green wire from AM-2640's power connector
 // Clock pin SPI
 #define CLOCK_PIN 4 //Blue wire from AM-2640's power connector
