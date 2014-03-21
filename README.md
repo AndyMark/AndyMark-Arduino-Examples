@@ -10,9 +10,9 @@ Go to http://files.andymark.com/AndyMark_AM-2640_LED_setup.pdf for some simple h
 Make sure you connect the ground from the LED strip to the Arduino ground.  
 Communications to the LEDs requires a common ground to work.
 
-<b>NOTE: Make sure you do not apply much more than 5V to these LED strips or you could destroy them!
+<b>NOTE: Make sure you do not apply much more than 5V to these LED strips or you could destroy them!<br>
 Handling note: Don't mess with the wiring while the power is on. This can cause voltage spikes<br>
-or sneak ground paths that can damage the LED strip</b>
+or sneak ground paths that can damage the LED strip!</b>
 
 Arduino info on how to install software libraries http://arduino.cc/en/Guide/Libraries
 
