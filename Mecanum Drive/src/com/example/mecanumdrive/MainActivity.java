@@ -1,5 +1,6 @@
-package com.example.joystick;
+package com.example.mecanumdrive;
 
+import com.example.joystick.R;
 import com.robotopen.RobotOpenRobot;
 import android.app.Activity;
 import android.widget.EditText;
