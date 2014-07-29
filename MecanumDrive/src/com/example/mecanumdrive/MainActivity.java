@@ -1,5 +1,13 @@
 package com.example.mecanumdrive;
 
+/*
+ *		This app is to be used with an Arduino Ethernet.
+ *		It was developed by AndyMark and was created in
+ *		with Arduino programs that can be found at
+ *		AndyMark.com. The passphrase for pushing 
+ *		is "bgarland".
+ *									*/
+
 import com.example.mecanumdrive.R;
 import com.robotopen.RobotOpenRobot;
 import android.app.Activity;
@@ -124,6 +132,8 @@ public class MainActivity extends Activity {
     	int id = view.getId();
 		if (id == R.id.buttonConnect) {
 			ip = text.getText().toString();
+			//You may need to disable the check on this statment
+			//Hint: Right-Click on yellow sign and select "disable check"
 			if (ip != null && !ip.isEmpty()) { 
 			
 				 if(connect.isChecked()){
@@ -221,6 +231,7 @@ public class MainActivity extends Activity {
 		String strIp;
 	//Save the IP address if it contains an IP	
 	//You may need to disable the check on this statment
+	//Hint: Right-Click on yellow sign and select "disable check"
 	if (ip != null && !ip.isEmpty()) {
 		
 		EditText text = (EditText)findViewById(R.id.editText1);
