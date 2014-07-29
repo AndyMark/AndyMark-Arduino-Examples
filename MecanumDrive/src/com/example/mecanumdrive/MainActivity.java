@@ -5,7 +5,7 @@ package com.example.mecanumdrive;
  *		It was developed by AndyMark and was created 
  *		to be used with Arduino programs that can be 
  *		found at AndyMark.com. The passphrase for pushing 
- *		is "bgarland".
+ *		is "andymark".
  *									*/
 
 import com.example.mecanumdrive.R;
