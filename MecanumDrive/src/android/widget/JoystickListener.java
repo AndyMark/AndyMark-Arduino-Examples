@@ -155,59 +155,47 @@ public class JoystickListener extends Activity implements OnTouchListener {
 			 		//Set the layout parameters to what we defined earlier.
 					view.setLayoutParams(layoutParams);
 					
-					//Get the R.id of the view
-					switch (view.getId()) {
-					
-						//If the view pressed is the Left Thumb
-					 	case R.id.thumbL: 
-					 
-					 		if (layoutParams.topMargin < 110) {
-					 			robot.joystick1.LeftY = (byte) (layoutParams.topMargin);
-					 			leftY.setText("Left Y: " +  (255 - layoutParams.topMargin));
-					 		} else {
-					 			
-					 			//This lets the max Y value be 255
-					 			robot.joystick1.LeftY = (byte) (layoutParams.topMargin + 37);
-					 			leftY.setText("Left Y: " + (255 - (layoutParams.topMargin +  37)));
-					 		}
-					 		
-					 		if (layoutParams.leftMargin < 110) {
-					 			
-					 			robot.joystick1.LeftX = (byte) (layoutParams.leftMargin);
-					 			leftX.setText("Left X: " + (layoutParams.leftMargin));
-					 			
-					 		} else {
-					 			
-					 			//This lets the max X value be 255
-					 			robot.joystick1.LeftX = (byte) (layoutParams.leftMargin + 37);
-					 			leftX.setText("Left X: " + (layoutParams.leftMargin + 37));
-					 			
-					 		}
-							System.out.println("Left X Value: " + (layoutParams.leftMargin + 37));
-							System.out.println("Left Y Value: " + layoutParams.topMargin + 37);
-							break;
-					 	
-						//If the right thumb is pressed
-					 	case R.id.thumbR: 
-		                	view.setLayoutParams(layoutParams);
-		                	if (layoutParams.leftMargin < 110) {
-		                		
-		                		robot.joystick1.RightX = (byte) (layoutParams.leftMargin);
-		                		rightX.setText("Right X: " + (layoutParams.leftMargin));
-		                		
-		                	} else {
-		                		
-		                		//This lets the max X value be 255
-		                		robot.joystick1.RightX = (byte) (layoutParams.leftMargin + 37);
-		                		rightX.setText("Right X: " + (layoutParams.leftMargin +  37));
-		                		
-		                	}
-		                	
-		                	System.out.println(" Right X Value: " + layoutParams.leftMargin +37);
-							break;
-					 	
-					 }
-				//If you can't do the about, catch the null pointer exception and do this:	
+					int id = view.getId();
+					if (id == R.id.thumbL) {
+						if (layoutParams.topMargin < 110) {
+							robot.joystick1.LeftY = (byte) (layoutParams.topMargin);
+							leftY.setText("Left Y: " +  (255 - layoutParams.topMargin));
+						} else {
+							
+							//This lets the max Y value be 255
+							robot.joystick1.LeftY = (byte) (layoutParams.topMargin + 37);
+							leftY.setText("Left Y: " + (255 - (layoutParams.topMargin +  37)));
+						}
+						if (layoutParams.leftMargin < 110) {
+							
+							robot.joystick1.LeftX = (byte) (layoutParams.leftMargin);
+							leftX.setText("Left X: " + (layoutParams.leftMargin));
+							
+						} else {
+							
+							//This lets the max X value be 255
+							robot.joystick1.LeftX = (byte) (layoutParams.leftMargin + 37);
+							leftX.setText("Left X: " + (layoutParams.leftMargin + 37));
+							
+						}
+						System.out.println("Left X Value: " + (layoutParams.leftMargin + 37));
+						System.out.println("Left Y Value: " + layoutParams.topMargin + 37);
+					} else if (id == R.id.thumbR) {
+						view.setLayoutParams(layoutParams);
+						if (layoutParams.leftMargin < 110) {
+							
+							robot.joystick1.RightX = (byte) (layoutParams.leftMargin);
+							rightX.setText("Right X: " + (layoutParams.leftMargin));
+							
+						} else {
+							
+							//This lets the max X value be 255
+							robot.joystick1.RightX = (byte) (layoutParams.leftMargin + 37);
+							rightX.setText("Right X: " + (layoutParams.leftMargin +  37));
+							
+						}
+						System.out.println(" Right X Value: " + layoutParams.leftMargin +37);
+					}
 				} catch (NullPointerException e) {
 
 					layoutParams.leftMargin = 110;

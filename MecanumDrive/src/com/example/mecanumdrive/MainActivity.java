@@ -121,90 +121,74 @@ public class MainActivity extends Activity {
 
     public void onToggleClicked(View view) {
     	
-    	//Find out which button is clicked
-    	switch(view.getId()) {
-    		
-    		//If the connect button is pressed
-    		case R.id.buttonConnect:
-    			
-    			ip = text.getText().toString();
-    			
-    			if (ip != null && !ip.isEmpty()) { 
-    			
-	    			 if(connect.isChecked()){
-	    				try {
-							
-							//Take the text from editText1 and make it the IP Address
-	    					roboCop = new RobotOpenRobot(ip);
-		    				roboCop.connect();
-		    				
-	    				} catch (NetworkOnMainThreadException e) {
-	    					
-	    	   				CharSequence text1 = "Type A Correct IP Address OR Check Your Connection";
-	        				int duration = Toast.LENGTH_LONG;
-	        				Toast.makeText(getApplicationContext(), text1, duration).show();
-	    					connect.setChecked(false);
-	    				}
-	    			
-	    			} else {
-	    				
-	    				roboCop.disable();
-	    				roboCop.disconnect();
-						enable.setChecked(false);
-	    			} 
-    			} else {
-	    				
-	    				connect.setChecked(false);
-    	   				CharSequence text1 = "Please Type An IP Address";
-        				int duration = 3;
-        				Toast.makeText(getApplicationContext(), text1, duration).show();
-	    				
-	    			}
-    		break;	
-
-    				    	
-    			
-    		case R.id.buttonEnable:
-    			
-    			boolean click = ((ToggleButton) view).isChecked();
-    			
-	    		try {	
-	    			if (connect.isChecked() == false) {
-	    				
-	    				enable.setChecked(false);
-	    				CharSequence text = "Please Connect First";
-	    				int duration = 3;
-	    				Toast.makeText(getApplicationContext(), text, duration).show();
-	
-	    			} else if (click) {
-	    				
-	    					roboCop.connect();
-	    					roboCop.enable();
-	    					
-	    					//Set the OnChangeListeners up 
-	    				    thumbL.setOnTouchListener(new JoystickListener(thumbL, roboCop, MainActivity.this.getApplicationContext(), connect, enable, ip, leftY, leftX, rightX));
-	    				    thumbR.setOnTouchListener(new JoystickListener(thumbR, roboCop, MainActivity.this.getApplicationContext(), connect, enable, ip, leftY, leftX, rightX));
-	    					
-	    			} else {
-	    				
-	    					roboCop.disable();
-	    				
-	    				}	
-	    		}catch (NullPointerException e) {
-	    			
+    	int id = view.getId();
+		if (id == R.id.buttonConnect) {
+			ip = text.getText().toString();
+			if (ip != null && !ip.isEmpty()) { 
+			
+				 if(connect.isChecked()){
+					try {
+						
+						//Take the text from editText1 and make it the IP Address
+						roboCop = new RobotOpenRobot(ip);
+						roboCop.connect();
+						
+					} catch (NetworkOnMainThreadException e) {
+						
+						CharSequence text1 = "Type A Correct IP Address OR Check Your Connection";
+						int duration = Toast.LENGTH_LONG;
+						Toast.makeText(getApplicationContext(), text1, duration).show();
+						connect.setChecked(false);
+					}
+				
+				} else {
+					
+					roboCop.disable();
+					roboCop.disconnect();
+					enable.setChecked(false);
+				} 
+			} else {
+					
+					connect.setChecked(false);
+					CharSequence text1 = "Please Type An IP Address";
+					int duration = 3;
+					Toast.makeText(getApplicationContext(), text1, duration).show();
+					
+				}
+		} else if (id == R.id.buttonEnable) {
+			boolean click = ((ToggleButton) view).isChecked();
+			try {	
+				if (connect.isChecked() == false) {
+					
+					enable.setChecked(false);
 					CharSequence text = "Please Connect First";
 					int duration = 3;
 					Toast.makeText(getApplicationContext(), text, duration).show();
-					ToggleButton enable = (ToggleButton) findViewById(R.id.buttonEnable);
-					enable.setChecked(false);
-				} 
-    		break;	
-    			
-    		default:
-    		
-    		break;	
 
-    		}
+				} else if (click) {
+					
+						roboCop.connect();
+						roboCop.enable();
+						
+						//Set the OnChangeListeners up 
+					    thumbL.setOnTouchListener(new JoystickListener(thumbL, roboCop, MainActivity.this.getApplicationContext(), connect, enable, ip, leftY, leftX, rightX));
+					    thumbR.setOnTouchListener(new JoystickListener(thumbR, roboCop, MainActivity.this.getApplicationContext(), connect, enable, ip, leftY, leftX, rightX));
+						
+				} else {
+					
+						roboCop.disable();
+					
+					}	
+			}catch (NullPointerException e) {
+				
+				CharSequence text = "Please Connect First";
+				int duration = 3;
+				Toast.makeText(getApplicationContext(), text, duration).show();
+				ToggleButton enable = (ToggleButton) findViewById(R.id.buttonEnable);
+				enable.setChecked(false);
+			}
+		} else {
+		}
     	
     	}
 
@@ -236,6 +220,7 @@ public class MainActivity extends Activity {
 		super.onSaveInstanceState(savedInstanceState);
 		String strIp;
 	//Save the IP address if it contains an IP	
+	//You may need to disable the check on this statment
 	if (ip != null && !ip.isEmpty()) {
 		
 		EditText text = (EditText)findViewById(R.id.editText1);
