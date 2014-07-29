@@ -2,9 +2,9 @@ package com.example.mecanumdrive;
 
 /*
  *		This app is to be used with an Arduino Ethernet.
- *		It was developed by AndyMark and was created in
- *		with Arduino programs that can be found at
- *		AndyMark.com. The passphrase for pushing 
+ *		It was developed by AndyMark and was created 
+ *		to be used with Arduino programs that can be 
+ *		found at AndyMark.com. The passphrase for pushing 
  *		is "bgarland".
  *									*/
 
